@@ -11,6 +11,8 @@ class BooksSerializer(serializers.ModelSerializer):
             "id",
             "title",
             "author",
+            "photo_book",
+            "photo_author",
             "number_of_pages",
             "price",
             "active",

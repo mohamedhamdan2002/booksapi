@@ -11,7 +11,9 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-
+from environs import Env
+env=Env() #new
+env.read_env() #new
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -46,6 +48,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount", #new
     "dj_rest_auth", #new
     "dj_rest_auth.registration",#new
+    "drf_spectacular", #new
     #local party
     "book_api",#new
 ]
@@ -56,7 +59,8 @@ REST_FRAMEWORK={
     "DEFAULT_AUTHENTICATION_CLASSES":[ #new
         "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.TokenAuthentication",
-    ]
+    ],
+    "DEFAULT_SCHEMA_CLASS":"drf_spectacular.openapi.AutoSchema",#new
 }
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -140,6 +144,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+MEDIA_URL = "/media/" # new
+MEDIA_ROOT = BASE_DIR / "media" # new
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -152,3 +158,11 @@ CORS_ORIGIN_WHITELIST=( #new
     "http://localhost:8000",
 )
 CSRF_TRUSTED_ORIGINS=["http://localhost:3000"] #new
+
+#sechama settings
+SPECTACULAR_SETTINGS = {
+"TITLE": "Books API Project",
+"DESCRIPTION": "A sample books-api shop to display alist of books ",
+"VERSION": "1.0.0",
+# OTHER SETTINGS
+}

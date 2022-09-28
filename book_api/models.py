@@ -18,6 +18,8 @@ class Books(models.Model):
      
     title=models.CharField(max_length=50)
     author=models.CharField(max_length=50)
+    photo_book=models.ImageField(upload_to='photos/',null=True,blank=True)
+    photo_author=models.ImageField(upload_to='photos/',null=True,blank=True)
     number_of_pages=models.IntegerField()
     price=models.DecimalField(max_digits=5,decimal_places=2,null=True,blank=True)
     active=models.BooleanField(default=True)
