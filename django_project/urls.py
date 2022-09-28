@@ -20,4 +20,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("api/v1/",include("book_api.urls")),
     path("api-auth/",include("rest_framework.urls")), #new
+    path("api/v1/",include("dj_rest_auth.urls")), #new
+    path("api/v1/signup/",include("dj_rest_auth.registration.urls")), #new
 ]
